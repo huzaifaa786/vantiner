@@ -4,6 +4,7 @@ import { Button, Card, Text, TextInput, Title } from "@tremor/react";
 import { useState } from "react";
 import CategoryTable from "./table";
 import useSWR from 'swr';
+import toast from "react-hot-toast";
 
 const CategoryPage = () => {
     const [name, setName] = useState('');
@@ -34,6 +35,7 @@ const CategoryPage = () => {
                     }
                 });
         }
+        toast.success('Category added');
     }
 
     return (

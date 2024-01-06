@@ -10,6 +10,7 @@ import {
 } from '@tremor/react';
 import useSWR, { mutate } from 'swr';
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 
 interface Category {
   id: number;
@@ -50,6 +51,7 @@ const CategoryTable = () => {
       setEditId(null);
       setEditedName('');
 
+      toast.success('Category updated');
       mutate('/api/category');
     } catch (error) {
       console.error('Error updating category:', error);
@@ -68,7 +70,7 @@ const CategoryTable = () => {
 
         console.log('Category deleted successfully');
 
-        // Refresh the data after deletion
+        toast.success('Category deleted');
         mutate('/api/category');
       } catch (error) {
         console.error('Error deleting category:', error);
